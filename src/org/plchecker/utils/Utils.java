@@ -75,6 +75,7 @@ public class Utils {
 //			+ "|session="
 			+ "|kazaktelekom\\.org"
 			+ "|http://live\\.slynet\\.tv/promoslynetiptv1\\?\\.m3u8"
+			+ "|live\\.planeta-online\\.tv:1935/public/channel_5"
 		+ regExpEnd;
 	private static final String exceptTitle = regExpBegin
 			+ "знакомства"
@@ -196,8 +197,8 @@ public class Utils {
 				fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
 				return true;
 			} catch (IOException e) {
-				System.err.println(address);
-				e.printStackTrace();
+				System.err.println("Error: " + e.getCause() == null ? address : e.getCause());
+//				e.printStackTrace();
 			} finally {
 				allClose(readableByteChannel, fileOutputStream, fileChannel);
 			}
